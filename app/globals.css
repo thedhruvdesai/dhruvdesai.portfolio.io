@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme tokens. Every text pairing below clears WCAG AAA (7:1) on its canvas. */
+:root {
+  color-scheme: light;
+  --canvas: #ffffff;
+  --surface: #fafafa;
+  --ink: #09090b;
+  --body: #52525b;
+  --line: #e4e4e7;
+  --accent: #4338ca;
+  --accent-alt: #155e75;
+}
+
+.dark {
+  color-scheme: dark;
+  --canvas: #09090b;
+  --surface: #101013;
+  --ink: #f4f4f5;
+  --body: #a1a1aa;
+  --line: rgb(39 39 42 / 0.75);
+  --accent: #a5b4fc;
+  --accent-alt: #67e8f9;
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne Variable", "Geist Variable", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-alt: var(--accent-alt);
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--canvas);
+    color: var(--body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #6366f1;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* The theme switch paints the new theme outward from the toggle button. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
