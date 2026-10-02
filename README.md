@@ -4,12 +4,11 @@ Next.js (App Router) + Tailwind CSS + Framer Motion + Lucide. Builds to a fully 
 
 ## How it goes online (GitHub Pages)
 
+The site lives at **https://dhruvdesai.com.au**.
+
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it to the `gh-pages` branch. GitHub Pages serves that branch.
 
-- Repo named `thedhruvdesai.github.io` → site at `https://thedhruvdesai.github.io/`
-- Any other repo name → site at `https://thedhruvdesai.github.io/<repo-name>/`
-
-The workflow works out the right path from the repo name, so there is nothing to configure. If the site does not appear, check **Settings → Pages** and make sure the source is **Deploy from a branch → gh-pages → / (root)**.
+The custom domain is set by `public/CNAME`. The domain's DNS (at VentraIP) points at GitHub Pages with A records for `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`. To go back to the plain `github.io` address, delete `public/CNAME`.
 
 ## Before you publish
 

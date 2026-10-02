@@ -24,14 +24,24 @@ jobs:
           node-version: 22
           cache: npm
 
-      # A repo named <user>.github.io is served from the root; any other repo from /<repo-name>.
+      # With a custom domain (public/CNAME) the site is served from the root of that domain.
+      # Otherwise: a repo named <user>.github.io is served from the root, any other repo from /<repo-name>.
       - name: Work out the site address
         run: |
           REPO="${GITHUB_REPOSITORY#*/}"
           OWNER="${GITHUB_REPOSITORY_OWNER,,}"
-          if [ "${REPO,,}" = "$OWNER.github.io" ]; then BASE=""; else BASE="/$REPO"; fi
+          if [ -s public/CNAME ]; then
+            BASE=""
+            URL="https://$(tr -d '[:space:]' < public/CNAME)"
+          elif [ "${REPO,,}" = "$OWNER.github.io" ]; then
+            BASE=""
+            URL="https://$OWNER.github.io"
+          else
+            BASE="/$REPO"
+            URL="https://$OWNER.github.io$BASE"
+          fi
           echo "PAGES_BASE_PATH=$BASE" >> "$GITHUB_ENV"
-          echo "NEXT_PUBLIC_SITE_URL=https://$OWNER.github.io$BASE" >> "$GITHUB_ENV"
+          echo "NEXT_PUBLIC_SITE_URL=$URL" >> "$GITHUB_ENV"
 
       - run: npm ci
       - run: npm run build
