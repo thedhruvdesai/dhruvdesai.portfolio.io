@@ -2,24 +2,14 @@
 
 Next.js (App Router) + Tailwind CSS + Framer Motion + Lucide. Builds to a fully static site and deploys itself to GitHub Pages on every push.
 
-## Put it online (GitHub Pages)
+## How it goes online (GitHub Pages)
 
-1. Create a new **public** repository on GitHub. Name it either
-   - `thedhruvdesai.github.io` → site lives at `https://thedhruvdesai.github.io/`, or
-   - anything else, e.g. `portfolio` → site lives at `https://thedhruvdesai.github.io/portfolio/`.
-2. In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Push this folder:
-   ```bash
-   git init
-   git add .
-   git commit -m "Portfolio"
-   git branch -M main
-   git remote add origin https://github.com/thedhruvdesai/<repo-name>.git
-   git push -u origin main
-   ```
-4. Open the **Actions** tab. When "Deploy to GitHub Pages" goes green (about a minute), the site is live.
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it to the `gh-pages` branch. GitHub Pages serves that branch.
 
-The workflow in `.github/workflows/deploy.yml` works out the right URL path for either repo name, so there is nothing to configure.
+- Repo named `thedhruvdesai.github.io` → site at `https://thedhruvdesai.github.io/`
+- Any other repo name → site at `https://thedhruvdesai.github.io/<repo-name>/`
+
+The workflow works out the right path from the repo name, so there is nothing to configure. If the site does not appear, check **Settings → Pages** and make sure the source is **Deploy from a branch → gh-pages → / (root)**.
 
 ## Before you publish
 
