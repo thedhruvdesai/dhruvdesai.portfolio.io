@@ -238,14 +238,14 @@ export const stack = [
 
 export const education = [
   {
-    school: "Kaplan Business School",
-    award: "Master of Information Technology (Web & Mobile Engineering)",
-    detail: "Top 10% of cohort. GPA 6.3 / 7.0, with High Distinctions in Mobile Development and the Capstone.",
-  },
-  {
     school: "Performance Education",
     award: "Professional Year Program (Information Technology)",
     detail: "",
+  },
+  {
+    school: "Kaplan Business School",
+    award: "Master of Information Technology (Web & Mobile Engineering)",
+    detail: "Top 10% of cohort. GPA 6.3 / 7.0, with High Distinctions in Mobile Development and the Capstone.",
   },
   {
     school: "MEFGI",
